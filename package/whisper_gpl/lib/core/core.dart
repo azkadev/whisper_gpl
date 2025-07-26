@@ -34,10 +34,16 @@ import 'package:whisper_gpl/uuid/uuid.dart';
 
 /// No Doc By Azkadev
 class WhisperGpl {
+  /// By Azkadev
   static WhisperGplNativeLibraryByAzkadev _whisperGplNativeLibrary = WhisperGplNativeLibraryByAzkadev(DynamicLibrary.process());
+
+  /// By Azkadev
   static String _pathWhisperGplNativeLibrary = "";
+
+  /// By Azkadev
   final EventEmitterByAzkadev _eventEmitter = EventEmitterByAzkadev();
 
+  /// By Azkadev
   static NativeCallable<Void Function(Pointer<Char>)> _initializedWhisperGplNativeLibraryNativeCallbackFunction({
     required EventEmitterByAzkadev eventEmitter,
   }) {
@@ -64,6 +70,7 @@ class WhisperGpl {
     });
   }
 
+  /// By Azkadev
   bool _isInitialized = false;
 
   /// No Doc By Azkadev
@@ -160,7 +167,7 @@ class WhisperGpl {
     return result;
   }
 
-  ///
+  /// By Azkadev
   Future<bool> loadModelFromFilePath({
     required final String filePath,
   }) async {
@@ -171,14 +178,8 @@ class WhisperGpl {
     return result["@type"] == "ok";
   }
 
-  ///
-  Future<
-      ({
-        bool isSucces,
-        String result,
-        String errorDescription,
-        String error,
-      })> transcribeFromFilePath({
+  /// By Azkadev
+  Future<({bool isSucces, String result, String errorDescription, String error})> transcribeFromFilePath({
     required final String filePath,
     required final int total_count_thread,
     required final bool is_translate,
