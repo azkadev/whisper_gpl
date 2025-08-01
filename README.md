@@ -55,7 +55,7 @@ sebelum memasang pastikan kamu mengetahui basic dart / flutter setidaknya kamu s
   untuk saat ini dan selamanya karena ini gratisan hanya support android arm 64 dan linux x86_64 / amd / intel
 
   ```bash
-  dart pub add whisper_gpl_flutter
+  dart pub add whisper_gpl_flutter native_extra_flutter
   ```
 
 ## Dokumentasi

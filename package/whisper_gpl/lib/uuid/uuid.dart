@@ -22,7 +22,9 @@ https://github.com/azkadev/whisper_gpl
 
 import 'dart:math';
 
-/// By Azkadev
+/// Generate uniqe id
+/// example:
+/// sakoskakokot2k3gokoakdoakodkao
 String generateUuidByAzkadev(
   int length, {
   String text = "0123456789abcdefghijklmnopqrstuvwxyz",

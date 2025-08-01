@@ -32,18 +32,24 @@ import 'package:whisper_gpl/event_emitter/event_emitter.dart' show EventEmitterB
 import 'package:whisper_gpl/ffi/whisper_gpl_native.dart' show WhisperGplNativeLibraryByAzkadev;
 import 'package:whisper_gpl/uuid/uuid.dart';
 
-/// No Doc By Azkadev
+/// Whisper Gpl is 100% speech to text offline
+/// if you confused checkout:
+/// https://github.com/azkadev/whisper_flutter
 class WhisperGpl {
   /// By Azkadev
+  /// _whisperGplNativeLibrary
   static WhisperGplNativeLibraryByAzkadev _whisperGplNativeLibrary = WhisperGplNativeLibraryByAzkadev(DynamicLibrary.process());
 
   /// By Azkadev
+  /// _pathWhisperGplNativeLibrary
   static String _pathWhisperGplNativeLibrary = "";
 
   /// By Azkadev
+  /// _eventEmitter
   final EventEmitterByAzkadev _eventEmitter = EventEmitterByAzkadev();
 
   /// By Azkadev
+  /// _initializedWhisperGplNativeLibraryNativeCallbackFunction
   static NativeCallable<Void Function(Pointer<Char>)> _initializedWhisperGplNativeLibraryNativeCallbackFunction({
     required EventEmitterByAzkadev eventEmitter,
   }) {
@@ -71,9 +77,14 @@ class WhisperGpl {
   }
 
   /// By Azkadev
+  /// _isInitialized
   bool _isInitialized = false;
 
-  /// No Doc By Azkadev
+  /// auto get format library
+  /// 
+  /// dylib
+  /// dll 
+  /// so
   String getLibraryExtension() {
     if (Platform.isMacOS || Platform.isIOS) {
       return "dylib";
@@ -84,7 +95,10 @@ class WhisperGpl {
     return "so";
   }
 
-  /// No Doc By Azkadev
+  /// return default whisper name library
+  /// getWhisperGplNativeLibraryPath
+  /// 
+  /// libwhisper_gpl.so
   String getWhisperGplNativeLibraryPath({
     String pathWhisperGplNativeLibrary = "",
   }) {
@@ -94,7 +108,8 @@ class WhisperGpl {
     return pathWhisperGplNativeLibrary;
   }
 
-  /// No Doc By Azkadev
+  /// please call this method first
+  /// ensureInitialized
   void ensureInitialized({
     String pathWhisperGplNativeLibrary = "",
   }) {
@@ -107,24 +122,28 @@ class WhisperGpl {
         ).nativeFunction.address,
       ),
     );
+    return;
   }
 
-  /// No Doc By Azkadev
-
+  /// initialized
+  /// not implemented 
   Future<void> initialized() async {
     if (_isInitialized) {
       return;
     }
     _isInitialized = true;
+    return;
   }
 
-  /// No Doc By Azkadev
+  /// call native library
+  /// _whisperGplNativeInvokeRaw
   Map _whisperGplNativeInvokeRaw(Map parameters) {
     final resultNative = _whisperGplNativeLibrary.InvokeWhisperGplByAzkadevNativeFunction(json.encode(parameters).toNativeUtf8().cast<Char>());
     return json.decode(resultNative.cast<Utf8>().toDartString());
   }
 
-  /// No Doc By Azkadev
+  /// listen callback from any thing
+  /// _on
   EventEmitterListenerByAzkadev _on(String eventName, FutureOr<dynamic> Function(Map update) onCallback) {
     return _eventEmitter.on(
       eventName: eventName,
@@ -168,6 +187,8 @@ class WhisperGpl {
   }
 
   /// By Azkadev
+  /// before you transcribe please call this
+  /// loadModelFromFilePathRaw
   Future<Map> loadModelFromFilePathRaw({
     required final String filePath,
   }) async {
@@ -178,6 +199,8 @@ class WhisperGpl {
   }
 
   /// By Azkadev
+  /// before you transcribe please call this
+  /// loadModelFromFilePath
   Future<bool> loadModelFromFilePath({
     required final String filePath,
   }) async {
@@ -188,6 +211,9 @@ class WhisperGpl {
   }
 
   /// By Azkadev
+  /// transcribe any audio without convert 
+  /// without convert ffmpeg
+  /// mp3, wav, ogg, anything audio format
   Future<({bool isSucces, String result, String errorDescription, String error})> transcribeFromFilePath({
     required final String filePath,
     required final int total_count_thread,

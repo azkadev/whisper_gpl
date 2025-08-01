@@ -104,35 +104,46 @@ class EventEmitterByAzkadev {
 }
 
 /// By Azkadev
+/// EventEmitterListenerByAzkadev
 class EventEmitterListenerByAzkadev {
   /// By Azkadev
+  /// event_name
   late final String event_name;
 
   /// By Azkadev
+  /// event_unique_id
   late final String event_unique_id;
 
   /// By Azkadev
+  /// onCancel
   late final Function(EventEmitterListenerByAzkadev event) onCancel;
 
   /// By Azkadev
+  /// onUpdate
   late final Function(dynamic data) onUpdate;
 
   /// By Azkadev
+  /// is_initialized
   bool is_initialized = false;
 
   /// By Azkadev
+  /// is_cancel
   bool is_cancel = false;
 
   /// By Azkadev
+  /// is_pause
   bool is_pause = false;
 
   /// GeneralUnivetse
+  /// isDisposed
   bool isDisposed = false;
 
   /// By Azkadev
+  /// EventEmitterListenerByAzkadev
   EventEmitterListenerByAzkadev();
 
   /// By Azkadev
+  /// ensureInitiaLized
   void ensureInitiaLized({
     required String eventName,
     required String eventUniqueId,
@@ -150,11 +161,13 @@ class EventEmitterListenerByAzkadev {
   }
 
   /// By Azkadev
+  /// resume
   void resume() {
     is_pause = false;
   }
 
   /// By Azkadev
+  /// pause
   void pause() {
     is_pause = true;
   }
@@ -162,6 +175,7 @@ class EventEmitterListenerByAzkadev {
   // @override
   //
   /// By Azkadev
+  /// dispose
   void dispose() {
     if (isDisposed) {
       return;
@@ -171,6 +185,7 @@ class EventEmitterListenerByAzkadev {
   }
 
   /// By Azkadev
+  /// close
   void close() {
     isDisposed = true;
     cancel();
@@ -178,6 +193,7 @@ class EventEmitterListenerByAzkadev {
   }
 
   /// By Azkadev
+  /// cancel
   bool cancel() {
     if (is_initialized == false) {
       return false;
