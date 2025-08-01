@@ -13,7 +13,7 @@ project(${PROJECT_NAME} LANGUAGES CXX)
 set(whisper_gpl_flutter_bundled_libraries
   # Defined in ../src/CMakeLists.txt.
   # This can be changed to accommodate different builds.  
-  "${CMAKE_CURRENT_SOURCE_DIR}/lib/libtelegram.so"
+  "${CMAKE_CURRENT_SOURCE_DIR}/lib/libwhisper_gpl.so"
   PARENT_SCOPE
 )
 

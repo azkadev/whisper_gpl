@@ -168,13 +168,22 @@ class WhisperGpl {
   }
 
   /// By Azkadev
-  Future<bool> loadModelFromFilePath({
+  Future<Map> loadModelFromFilePathRaw({
     required final String filePath,
   }) async {
-    final result = await _invoke({
+    return await _invoke({
       "@type": "loadModelFromFilePathWhisperGplByAzkadevNative",
       "whisper_model_file_path": filePath,
     });
+  }
+
+  /// By Azkadev
+  Future<bool> loadModelFromFilePath({
+    required final String filePath,
+  }) async {
+    final result = await loadModelFromFilePathRaw(
+      filePath: filePath,
+    );
     return result["@type"] == "ok";
   }
 
